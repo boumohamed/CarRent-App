@@ -1,0 +1,80 @@
+﻿@model IEnumerable<ProjectGestionLocationVoiture.Models.Client>
+
+@{
+    ViewBag.Title = "Clients";
+}
+<!--
+
+ <div class="row">
+
+        <div class="col-md-6 col-sm-12">
+            <div class="card" style="width: 18rem;">
+                <img src="Url.Content(item.Cin)" class="card-img-top img" alt="CIN">
+            </div>
+        </div>
+
+        <div class="col-md-6 col-sm-12">
+            <div class="col-md-6 col-sm-12">
+                <div class="card" style="width: 18rem;">
+                    <img src="Url.Content(item.PermisConduire)" class="card-img-top img" alt="Permis">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+-->
+<p class="text-center h1 fw-bold mb-1 title text-modified text-colored"><span class="primary-color">Vintage </span><span class="secondary-color">Car</span> </p>
+<p class="text-center h4 fw-bold m-3 text-modified text-colored">Liste Des Clients</p>
+<div class="table-responsive-sm">
+    <table class="table table-bordered mt-3 box">
+        <tr class="bg text-light text-modified">
+            <th>
+                ID
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AdresseMail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telephone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateNaissance)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr class="text-modified">
+                <td>
+                    @Html.DisplayFor(modelItem => item.UID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AdresseMail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telephone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateNaissance)
+                </td>
+
+                <td>
+                    <a href="@Url.Action("DetailsClient", "Admins", new { id = item.UID })" class="btn btn-outline-danger text-modified">
+                        <i class="fas fa-arrow-right"></i> Informations
+                    </a>
+
+
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

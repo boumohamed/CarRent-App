@@ -1,0 +1,50 @@
+﻿@model IEnumerable<ProjectGestionLocationVoiture.Models.Admin>
+
+@{
+    ViewBag.Title = "Admins";
+}
+
+
+
+
+
+
+<p class="text-center h1 fw-bold mb-1 title text-modified text-colored"><span class="primary-color">Vintage </span><span class="secondary-color">Car</span></p>
+<p class="text-center h4 fw-bold m-3 text-modified text-colored">Liste Des Administrateurs</p>
+<div class="row justify-content-center mt-2">
+    <p>
+        <a href="@Url.Action("AjouterAdmin", "Admins")" class="btn btn-outline-danger text-modified"> <i class="fas fa-plus"></i> Ajouter Administrateur </a>
+    </p>
+</div>
+<table class="table table-bordered box mt-3">
+    <tr class="bg text-light text-modified">
+        <th>
+            ID
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AdresseMail)
+        </th>
+        
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr class="text-modified">
+            <td>
+                @Html.DisplayFor(modelItem => item.UID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdresseMail)
+            </td>
+            <td>
+                <div class=" row justify-content-center">
+                    <a href="@Url.Action("ModifierAdmin", "Admins", new { id = item.UID })" class="btn btn-outline-danger text-modified">
+                        <i class="fas fa-pen"></i> Modifier
+                    </a>
+                </div>
+            </td>
+        </tr>
+    }
+
+</table>

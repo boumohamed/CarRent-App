@@ -1,0 +1,61 @@
+﻿@model IEnumerable<ProjectGestionLocationVoiture.Models.Voiture>
+
+@{
+    ViewBag.Title = "Voitures";
+}
+<div class="row justify-content-center mt-2">
+    <p>
+        <a href="@Url.Action("AjouterVoiture", "Admins")" class="btn btn-outline-danger text-modified"> <i class="fas fa-plus"></i> Ajouter Voiture </a>
+    </p>
+</div>
+<div class="row">
+    @foreach (var item in Model)
+    {
+
+        <div class="col-sm-12 col-md-6 col-lg-4">
+            <div class="card border-0 bg-muted card-view p-2 mb-4" style="width: 20rem;">
+                @if (item.ImagePrincipale == null)
+                {
+                    <img src="@Url.Content("~/Assets/App/noimage.jpg")" class="card-img-top img" alt="@item.Modele.Marque">
+                }
+                else
+                {
+                    <img src="@Url.Content(item.ImagePrincipale)" class="card-img-top img" alt="@item.Modele.Marque">
+                }
+
+                <div class="card-body">
+                    <h5 class="card-title Animated-title text-modified"> @Html.DisplayFor(modelItem => item.Modele.Marque) @Html.DisplayFor(modelItem => item.Modele.Serie)</h5>
+                    <p class="card-text"><i class="fas fa-gas-pump"></i> @Html.DisplayFor(modelItem => item.Carburant)</p>
+                    <p class="card-text"><i class="fas fa-car"></i> @Html.DisplayFor(modelItem => item.Categorie)</p>
+                    <p class="card-text"><i class="fas fa-calendar-alt"></i> @Html.DisplayFor(modelItem => item.DateCirculation)</p>
+                    <p class="card-text"><i class="fas fa-tags"></i>  @Html.DisplayFor(modelItem => item.Immatriculation)</p>
+
+                    @if (item.Dsiponible)
+                    {
+                        <p class="card-text"><i class="fas fa-check"></i>  Disponible </p>
+                    }
+                    else
+                    {
+                        <p class="card-text"><i class="fas fa-ban"></i>  Non Disponible </p>
+                    }
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <a href="@Url.Action("ModifierVoiture", "Admins", new { id = item.VID })" class="btn btn-outline-danger text-modified">
+                            Modifier <i class="fas fa-pen"></i>
+                        </a>
+                        <a href="@Url.Action("ModifierVoiture", "Admins", new { id = item.VID })" class="btn btn-outline-danger text-modified">
+                            Supprimer <i class="fas fa-trash-alt"></i>
+                        </a>
+                    </div>
+
+
+
+                </div>
+                <div class="card-footer text-muted text-modified row justify-content-center">
+                    @Html.DisplayFor(modelItem => item.Prixournalier) Dh/Jour
+                </div>
+            </div>
+
+        </div>
+
+    }
+</div>

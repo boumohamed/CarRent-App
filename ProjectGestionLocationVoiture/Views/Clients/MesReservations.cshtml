@@ -1,0 +1,56 @@
+﻿@model IEnumerable<ProjectGestionLocationVoiture.Models.Reservation>
+
+@{
+    ViewBag.Title = "MesReservations";
+}
+<p class="text-center h1 fw-bold mb-1 title text-modified text-colored"><span class="primary-color">Vintage </span><span class="secondary-color">Car</span></p>
+<p class="text-center h4 fw-bold m-3 text-modified text-colored">Mes Reservations</p>
+<div class="table-responsive mt-4">
+    <table class="table table-bordered">
+        <tr class="bg text-light text-modified">
+            <th>
+                Voiture
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TypeLocation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateDebutLocation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateFinLocation)
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr class="text-modified">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Voiture.Modele.Marque) @Html.DisplayFor(modelItem => item.Voiture.Modele.Serie)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TypeLocation)
+                </td>
+                <th>
+                    @Html.DisplayFor(modelItem => item.DateDebutLocation)
+                </th>
+                <th>
+                    @Html.DisplayFor(modelItem => item.DateFinLocation)
+                </th>
+                
+            </tr>
+        }
+
+    </table>
+</div>
+
+@section Footer
+{
+    <div class="bg fixed-bottom text-light py-3">
+        <div class="container row d-flex justify-content-center align-items-center">
+            Copyright @DateTime.Now.Year <span class="ml-2 brand"> Vintage <span class="secondary-color">Car</span></span>
+        </div>
+    </div>
+}
+
+

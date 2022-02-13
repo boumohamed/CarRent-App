@@ -1,0 +1,100 @@
+﻿@model IEnumerable<ProjectGestionLocationVoiture.Models.Reservation>
+
+@{
+    ViewBag.Title = "Reservations";
+}
+<p class="text-center h1 fw-bold mb-1 title text-modified text-colored"><span class="primary-color">Vintage </span><span class="secondary-color">Car</span></p>
+<p class="text-center h4 fw-bold m-3 text-modified text-colored">Reservations</p>
+
+<div class="table-responsive-sm">
+    <table class="table box table-bordered">
+        <tr class="bg text-light">
+            <th>
+                ID Client
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Client.Nom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Client.Telephone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateDebutLocation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateFinLocation)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            if(item.DateFinLocation < DateTime.Now)
+                {
+                    <tr>
+                        <td class="bg-danger text-light">
+                            @Html.DisplayFor(modelItem => item.Client.UID)
+                        </td>
+                        <td class="bg-danger text-light">
+                            @Html.DisplayFor(modelItem => item.Client.Nom)
+                        </td>
+                        <td class="bg-danger text-light">
+                            @Html.DisplayFor(modelItem => item.Client.Telephone)
+                        </td>
+                        <td class="bg-danger text-light">
+                            @item.DateDebutLocation.ToString("dddd, dd MMMM yyyy")
+                        </td>
+                        <td class="bg-danger text-light">
+                            @item.DateFinLocation.ToString("dddd, dd MMMM yyyy")
+                        </td>
+                        <td>
+                            <div class="row justify-content-center p-1">
+                                <div class="btn-group" role="group">
+                                    <a href="@Url.Action("DetailsReservation", "Admins", new { date = item.DateDebutLocation, client = item.CID, voiture = item.VID })" class="btn btn-outline-danger text-modified">
+                                        Détails <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                    <a href="@Url.Action("DetailsReservation", "Admins", new { date = item.DateDebutLocation, client = item.CID, voiture = item.VID })" class="btn btn-outline-danger text-modified">
+                                        Supprimer <i class="fas fa-trash-alt"></i>
+                                    </a>                                    
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+            }
+            else
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Client.UID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Client.Nom)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Client.Telephone)
+                        </td>
+                        <td>
+                            @item.DateDebutLocation.ToString("dddd, dd MMMM yyyy")
+                        </td>
+                        <td>
+                            @item.DateFinLocation.ToString("dddd, dd MMMM yyyy")
+                        </td>
+                        <td>
+                            <div class="row justify-content-center p-1">
+                                <div class="btn-group" role="group">
+                                    <a href="@Url.Action("DetailsReservation", "Admins", new { date = item.DateDebutLocation, client = item.CID, voiture = item.VID })" class="btn btn-outline-danger text-modified">
+                                        <i class="fas fa-arrow-right"></i> Détails 
+                                    </a>
+                                    <a href="@Url.Action("DetailsReservation", "Admins", new { date = item.DateDebutLocation, client = item.CID, voiture = item.VID })" class="btn btn-outline-danger text-modified">
+                                        Supprimer <i class="fas fa-trash-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+
+        }
+
+    </table>
+</div>

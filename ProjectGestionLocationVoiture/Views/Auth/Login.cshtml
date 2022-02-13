@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+}
+
+
+
+@using (Html.BeginForm("Login", "Auth", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row d-flex justify-content-center box mt-5 align-items-center h-100">
+        <div class="col">
+                    <div class="row justify-content-center">
+                        <div class="col-md-12 col-lg-6 col-xl-5 order-2 order-lg-1">
+                            <p class="text-center h1 text-colored fw-bold mb-2 mx-1 mx-md-4 mt-4 title text-modified"><span class="primary-color">Vintage </span><span class="secondary-color">Car</span></p>
+                            <p class="text-center h4 text-colored fw-bold mb-2 mx-1 mx-md-4 mt-4 text-modified">Bienvenus</p>
+                            <div class="form-horizontal mx-1 mx-md-4">
+                                <div class="form-group">
+                                    <label class="control-label text-modified">Email</label>
+                                    <div class="col">
+                                        <input class="form-control" type="email" name="email" required />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label text-modified">Mot de passse</label>
+                                    <div class="col">
+                                        <input class="form-control" type="password" name="password" required />
+                                    </div>
+                                </div>
+                             
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <button type="submit" class="btn btn-outline-danger"><i class="fas fa-sign-in-alt"></i>  Login</button>
+                                        <a href="@Url.Action("CreerCompte", "Auth")" class="btn btn-outline-danger text-modified"> <i class="fas fa-user-plus"></i> Créer Compte </a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-12  big-row col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-1">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+}
+

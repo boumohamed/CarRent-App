@@ -1,0 +1,100 @@
+﻿@model IEnumerable<ProjectGestionLocationVoiture.Models.Voiture>
+
+
+@{
+    ViewBag.Title = "Voitures";
+}
+
+@using (Html.BeginForm("Voitures", "clients", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="row justify-content-center mt-3">
+        <div class="col-md-4">
+            <div class="form-group row">
+                <label class="control-label col-md-4 text-modified">Départ</label>
+                <input type="date" name="dateDebut" class="form-control col-md-8" value="@ViewBag.dateDebit" />
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group row">
+                <label class="control-label col-md-4 text-modified">Retour</label>
+                <input type="date" name="dateFin" class="form-control col-md-8" value="@ViewBag.dateFin" />
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <button type="submit" class="btn btn-outline-danger text-modified"><i class="fas fa-search"></i> CHERCHER </button>
+            </div>
+        </div>
+    </div>
+}
+
+
+
+@if (Model.Count() > 0)
+{
+    <div class="row">
+        @foreach (var item in Model)
+        {
+
+
+            <div class="col-sm-12 col-md-4 mb-4">
+                <div class="card border-0 card-view p-2" style="width: 20rem;">
+                    <img src="@Url.Content(item.ImagePrincipale)" class="card-img-top img" alt="@item.Modele.Marque">
+                    <div class="card-body">
+                        <h5 class="card-title Animated-title text-modified"> @Html.DisplayFor(modelItem => item.Modele.Marque) @Html.DisplayFor(modelItem => item.Modele.Serie)</h5>
+                        <p class="card-text"><i class="fas fa-gas-pump"></i> @Html.DisplayFor(modelItem => item.Carburant)</p>
+                        <p class="card-text"><i class="fas fa-car"></i> @Html.DisplayFor(modelItem => item.Categorie)</p>
+
+                        @if (item.Dsiponible)
+                        {
+                            if (ViewBag.dateDebut == null || ViewBag.datefin == null)
+                            {
+                                <a href="@Url.Action("Reserver", "Clients", new { id = item.VID, datedebut = ViewBag.dateDebut, datefin = ViewBag.dateFin })" class="btn btn-outline-danger text-modified disabled">
+                                    Reserver <i class="fas fa-ban"></i>
+                                </a>
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("Reserver", "Clients", new { id = item.VID, DateDebut = ViewBag.dateDebut, DateFin = ViewBag.dateFin })" class="btn btn-outline-danger text-modified">
+                                    Reserver <i class="fas fa-arrow-right"></i>
+                                </a>
+                            }
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("Reserver", "Clients", new { id = item.VID, datedebut = ViewBag.dateDebut, datefin = ViewBag.dateFin })" class="btn btn-outline-danger text-modified disabled">
+                                Reserver <i class="fas fa-ban"></i>
+                            </a>
+                        }
+
+                    </div>
+                    <div class="card-footer text-muted text-modified row justify-content-center">
+                        @Html.DisplayFor(modelItem => item.Prixournalier) Dh/Jour
+                    </div>
+                </div>
+
+            </div>
+
+        }
+    </div>
+}
+else
+{
+    <div class="row justify-content-center m-4">
+        <div class="text-modified">
+            <h2>Aucune voiture Corespond à Votre Recherche </h2>
+        </div>
+    </div>
+}
+
+
+
+@section Footer
+{
+    <div class="bg mt-4 text-light py-3">
+        <div class="container row d-flex justify-content-center align-items-center">
+            Copyright @DateTime.Now.Year <span class="ml-2 brand"> Vintage <span class="secondary-color">Car</span></span>
+        </div>
+    </div>
+}

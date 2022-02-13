@@ -1,0 +1,50 @@
+﻿@model ProjectGestionLocationVoiture.Models.Reservation
+
+@{
+    ViewBag.Title = "DetailsReservation";
+}
+
+<h2>DetailsReservation</h2>
+
+<div>
+    <h4>Reservation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Client.AdresseMail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Client.AdresseMail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Voiture.Immatriculation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Voiture.Immatriculation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TypeLocation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TypeLocation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateFinLocation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateFinLocation)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,46 @@
+﻿@model IEnumerable<ProjectGestionLocationVoiture.Models.Modele>
+
+@{
+    ViewBag.Title = "Modeles";
+}
+<div class="row justify-content-center">
+    <p>
+        <a href="@Url.Action("CreateModele", "Admins")" class="btn btn-outline-danger text-modified"> <i class="fas fa-plus"></i> Ajouter Modele </a>
+    </p>
+ </div>
+
+
+
+
+    <table class="table table-bordered">
+        <tr class="bg text-light">
+            <th>
+                @Html.DisplayNameFor(model => model.Marque)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Serie)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Marque)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Serie)
+                </td>
+                <td>
+                    <div class="row justify-content-center">
+                        <div class="btn-group" role="group">
+                            <a href="@Url.Action("ModifierModele", "Admins", new { id = item.MID })" class="btn btn-outline-danger text-modified"> Modifier <i class="fas fa-pen"></i> </a>
+                            <a href="@Url.Action("SupprimerModele", "Admins", new { id = item.MID })" class="btn btn-outline-danger text-modified"> Supprimer <i class="fas fa-trash-alt"></i> </a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        }
+
+    </table>

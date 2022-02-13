@@ -1,0 +1,165 @@
+﻿@model IEnumerable<ProjectGestionLocationVoiture.Models.Voiture>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+@if (ViewBag.Error == 1)
+{
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <div class="row justify-content-center">
+            Ressayer ! Veuillez Verifier Les Dates
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="false">&times;</span>
+            </button>
+        </div>
+    </div>
+}
+@using (Html.BeginForm("Index", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="row d-flex justify-content-center mt-5 mb-5 align-items-center h-100 box">
+        <div class="col">
+            <div class="row justify-content-center">
+                <div class="col-md-10 col-lg-6 col-xl-5 order-md-2 order-lg-1">
+
+                    <p class="text-center h1 fw-bold m-2 mb-md-5 mb-sm-4 title text-modified mt-sm-4 text-colored"><span class="primary-color">Vintage </span><span class="secondary-color">Car</span></p>
+                    <p class="text-center h4 fw-bold m-2 mb-md-5 mb-sm-4 text-modified mt-md-4 text-colored">Le leader de location de voitures à Casablanca</p>
+                    <div class="row">
+
+                        <div class="form-group col-md-6 col-sm-6">
+                            <label class="control-label text-modified" for="Categorie">Catégorie</label>
+                            <select id="Categorie" name="categorie" class="form-control">
+                                <option value="SUV">SUV</option>
+                                <option value="Berline">Berline</option>
+                                <option value="Citadine">Citadine</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6 col-sm-6">
+                            <label class="control-label text-modified" for="Carburant">Carburant</label>
+                            <select id="Carburant" name="carburant" class="form-control">
+                                <option value="Diesel">Diesel</option>
+                                <option value="Essence">Essence</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6 col-sm-6">
+                            <label class="control-label text-modified" for="dateDebut">Départ</label>
+                            <input type="date" name="dateDebut" id="dateDebut" class="form-control" />
+                        </div>
+                        <div class="form-group col-md-6 col-sm-6">
+                            <label class="control-label text-modified" for="dateFin">Retour</label>
+                            <input type="date" name="dateFin" id="dateFin" class="form-control" />
+                        </div>
+
+
+
+                        <div class="d-flex justify-content-center col-md-12 col-sm-6">
+                            <button type="submit" class="btn btn-outline-danger mb-3 text-modified">CHERCHER <i class="fas fa-search"></i> </button>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-10 col-lg-6 big-row col-xl-7 d-flex align-items-center order-md-1 order-lg-2">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+<div class="row">
+    <div class="col-lg-4 col-sm-6">
+        <div class="circle-tile">
+            <div class="circle-tile-heading dark-blue"><i class="fa fa-users fa-fw fa-3x"></i></div>
+            <div class="circle-tile-content dark-blue">
+                <div class="circle-tile-description text-faded text-modified"> Clients</div>
+                <div class="circle-tile-number text-faded">@ViewBag.Clients</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4 col-sm-6">
+        <div class="circle-tile">
+            <div class="circle-tile-heading dark-blue"><i class="fa fa-car fa-fw fa-3x"></i></div>
+            <div class="circle-tile-content dark-blue">
+                <div class="circle-tile-description text-faded text-modified"> Véhicules</div>
+                <div class="circle-tile-number text-faded ">@ViewBag.Voitures</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4 col-sm-6">
+        <div class="circle-tile">
+            <div class="circle-tile-heading dark-blue"><i class="fa fa-list fa-fw fa-3x"></i></div>
+            <div class="circle-tile-content dark-blue">
+                <div class="circle-tile-description text-faded text-modified"> Réservations</div>
+                <div class="circle-tile-number text-faded ">@ViewBag.Reservations</div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<style>
+    .circle-tile {
+        margin-bottom: 15px;
+        text-align: center;
+        box-shadow: rgba(0, 0, 0, 0.50) 0px 25px 50px -12px;
+    }
+        .circle-tile:hover {
+            box-shadow: rgba(0, 0, 0, 0.50) 0px 55px 50px -12px;
+            -webkit-transform: scale(1.05);
+            transform: scale(1.05);
+
+        }
+
+    .circle-tile-heading {
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        border-radius: 100%;
+        color: #FFFFFF;
+        height: 80px;
+        margin: 0 auto -40px;
+        position: relative;
+        transition: all 0.3s ease-in-out 0s;
+        width: 80px;
+    }
+
+    .circle-tile-heading .fa {
+            line-height: 80px;
+        }
+
+    .circle-tile-content {
+        padding-top: 50px;
+        border-radius : 10px;
+    }
+
+    .circle-tile-number {
+        font-size: 26px;
+        font-weight: 700;
+        line-height: 1;
+        padding: 5px 0 15px;
+    }
+
+
+
+
+    .circle-tile-heading.dark-blue:hover  {
+        background-color: rgb(154, 208, 23);
+        color: #072227;
+    }
+
+
+
+    .tile-img {
+        text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.9);
+    }
+
+    .dark-blue {
+        background-color: #072227;
+    }
+
+
+
+    .text-faded {
+        color: rgba(255, 255, 255, 0.7);
+    }
+</style>

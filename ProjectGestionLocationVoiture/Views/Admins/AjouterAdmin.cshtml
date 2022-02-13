@@ -1,0 +1,52 @@
+﻿@model ProjectGestionLocationVoiture.Models.Admin
+
+@{
+    ViewBag.Title = "Ajouter Admin";
+}
+
+
+
+
+@using (Html.BeginForm("AjouterAdmin", "Admins", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row d-flex justify-content-center mt-5 box align-items-center h-100">
+        <div class="col">
+                    <div class="row justify-content-center">
+                        <div class="col-md-12 col-lg-6 col-xl-5 order-1 order-lg-1">
+                            <p class="text-center h1 fw-bold mb-2 mx-1 mx-md-4 mt-4 title text-colored text-modified"><span class="primary-color">Vintage </span><span class="secondary-color">Car</span></p>
+                            <p class="text-center h4 fw-bold mb-2 mx-1 mx-md-4 mt-4 mb-md-5 text-colored text-modified">Créer un Compte Administrateur</p>
+                            <div class="form-horizontal mx-1 mx-md-4">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.AdresseMail, htmlAttributes: new { @class = "control-label text-modified" })
+                                    <div class="col">
+                                        @Html.EditorFor(model => model.AdresseMail, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.AdresseMail, "", new { @class = "secondary-color text-modified" })
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.MotDePasse, htmlAttributes: new { @class = "control-label text-modified" })
+                                    <div class="col">
+                                        @Html.EditorFor(model => model.MotDePasse, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
+                                        @Html.ValidationMessageFor(model => model.MotDePasse, "", new { @class = "secondary-color text-modified" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <button type="submit" class="btn btn-outline-danger"><i class="fas fa-user-cog"></i>  Créer Administrateur</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-12 big-row col-lg-6 col-xl-7 d-flex align-items-center order-2 order-lg-1">
+                        </div>
+                    </div>
+        </div>
+    </div>
+}
+

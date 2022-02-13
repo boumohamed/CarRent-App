@@ -1,0 +1,116 @@
+﻿@model ProjectGestionLocationVoiture.Models.Voiture
+
+@{
+    ViewBag.Title = "ModifierVoiture";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row d-flex justify-content-center align-items-center box m-2">
+        <div class="col">
+            <div class="card text-dark border-0" style="border-radius: 25px;">
+                <div class="card-body p-md-2">
+                    <div class="row">
+                        <div class="col">
+                            <p class="text-center h1 fw-bold mb-2 title text-modified text-colored"><span class="primary-color">Vintage </span><span class="secondary-color">Car</span> </p>
+                            <div class="form-horizontal mx-1 mx-md-4">
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                @Html.HiddenFor(model => model.VID)
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.MID, "MID", htmlAttributes: new { @class = "control-label text-modified" })
+                                    <div class="col-md-10">
+                                        @Html.DropDownList("MID", null, htmlAttributes: new { @class = "form-control", @readonly = true })
+                                        @Html.ValidationMessageFor(model => model.MID, "", new { @class = "text-danger text-modified" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.DateCirculation, htmlAttributes: new { @class = "control-label text-modified" })
+                                    <div class="col-md-12">
+                                        @Html.EditorFor(model => model.DateCirculation, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                        @Html.ValidationMessageFor(model => model.DateCirculation, "", new { @class = "text-danger text-modified" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Carburant, htmlAttributes: new { @class = "control-label text-modified" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Carburant, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                        @Html.ValidationMessageFor(model => model.Carburant, "", new { @class = "text-danger text-modified" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Immatriculation, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Immatriculation, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                        @Html.ValidationMessageFor(model => model.Immatriculation, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.ImagePrincipaleFile, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.ImagePrincipale, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                        @Html.ValidationMessageFor(model => model.ImagePrincipale, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.ImageSecondaireFile, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.ImageSecondaire, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                        @Html.ValidationMessageFor(model => model.ImageSecondaire, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Prixournalier, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Prixournalier, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Prixournalier, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Categorie, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Categorie, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Categorie, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Dsiponible, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        <div class="checkbox">
+                                            @Html.EditorFor(model => model.Dsiponible)
+                                            @Html.ValidationMessageFor(model => model.Dsiponible, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" value="Save" class="btn btn-outline-danger" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+

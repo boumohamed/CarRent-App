@@ -1,0 +1,86 @@
+﻿@model ProjectGestionLocationVoiture.Models.Client
+
+@{
+    ViewBag.Title = "CreerCompte";
+}
+
+
+
+@using (Html.BeginForm("CreerCompte", "Auth", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row d-flex justify-content-center box mt-2 align-items-center h-100">
+        <div class="col">
+                    <div class="row justify-content-center">
+                        <div class="col-md-12 col-lg-6 col-xl-5 order-1 order-lg-1">
+                            <p class="text-center h1 fw-bold mb-2 mx-1 mx-md-4 mt-4 text-colored title text-modified"><span class="primary-color">Vintage </span><span class="secondary-color">Car</span></p>
+                            <p class="text-center h4 fw-bold mb-2 mx-1 mx-md-4 mt-4 text-colored text-modified">Rejoignez-Nous</p>
+                            <div class="form-horizontal mx-1 mx-md-4">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Nom, htmlAttributes: new { @class = "control-label text-modified" })
+                                    <div class="col">
+                                        @Html.EditorFor(model => model.Nom, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Nom, "", new { @class = "text-danger text-modified" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.AdresseMail, htmlAttributes: new { @class = "control-label text-modified" })
+                                    <div class="col">
+                                        @Html.EditorFor(model => model.AdresseMail, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.AdresseMail, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.MotDePasse, htmlAttributes: new { @class = "control-label text-modified" })
+                                    <div class="col">
+                                        @Html.EditorFor(model => model.MotDePasse, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
+                                        @Html.ValidationMessageFor(model => model.MotDePasse, "", new { @class = "text-danger text-modified" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Telephone, htmlAttributes: new { @class = "control-label text-modified" })
+                                    <div class="col">
+                                        @Html.EditorFor(model => model.Telephone, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Telephone, "", new { @class = "text-danger text-modified" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.DateNaissance, htmlAttributes: new { @class = "control-label text-modified" })
+                                    <div class="col">
+                                        @Html.EditorFor(model => model.DateNaissance, new { htmlAttributes = new { @class = "form-control ", @type = "date" } })
+                                        @Html.ValidationMessageFor(model => model.DateNaissance, "", new { @class = "text-danger text-modified" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.CinFile, htmlAttributes: new { @class = "control-label text-modified" })
+                                    <div class="col">
+                                        <input type="file" name="CinFile" id="CinFile" accept="image/png, image/jpeg" required="required" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.PermisConduireFile, htmlAttributes: new { @class = "control-label text-modified" })
+                                    <div class="col">
+                                        <input type="file" name="PermisConduireFile" id="PermisConduireFile" accept="image/png, image/jpeg" required="required" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <button type="submit" class="btn btn-outline-danger"><i class="fas fa-user-plus"></i>  Créer Compte</button>
+                                    </div>
+                                </div>
+    
+                            </div>
+                        </div>
+                        <div class="col-md-12  big-row col-lg-6 col-xl-7 d-flex align-items-center order-2 order-lg-1">
+                        </div>
+                    </div>
+                </div>
+            </div>
+}
+
+

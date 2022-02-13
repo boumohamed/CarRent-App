@@ -1,0 +1,19 @@
+﻿@model ProjectGestionLocationVoiture.Models.Modele
+
+@{
+    ViewBag.Title = "ModeleDetails";
+}
+
+
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Modele</h4>
+        <h5> @Html.DisplayNameFor(model => model.Marque) :  @Html.DisplayFor(model => model.Marque) </h5>
+        <h5> @Html.DisplayNameFor(model => model.Serie) :  @Html.DisplayFor(model => model.Serie) </h5>
+        <div class="btn-group mt-4" role="group">
+            @Html.ActionLink("Liste", "Modeles", "Admins", null, new { @class = "btn btn-outline-danger" })
+            @Html.ActionLink("Modifier", "EditModele", "Admins", new { id = Model.MID }, new { @class = "btn btn-outline-danger" })
+        </div>
+    </div>
+</div>
