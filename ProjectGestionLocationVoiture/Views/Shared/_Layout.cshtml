@@ -27,6 +27,8 @@
                         @Html.ActionLink("Accueil", "Index", "Home", null, new { @class = "nav-link text-modified text-light" })
                     </li>
 
+
+
                     @if ((string)Session["Typeuser"] == "admin")
                     {
                         @Html.Partial("~/Views/Admins/AdminElements.cshtml")
@@ -48,6 +50,9 @@
                         </li>
                     }
 
+                    <li class="nav-item">
+                        @Html.ActionLink("Qui Sommes-Nous ?", "About", "Home", null, new { @class = "nav-link text-modified text-light" })
+                    </li>
                 </ul>
                 <div class="my-2 my-lg-0">
                     <div class="navbar-nav mr-auto">
@@ -91,7 +96,7 @@
     
 
     .big-row {
-        background-image: url("../../Assets/App/backImage.jpg");
+        background-image: url("../../Assets/App/backImage.png");
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;

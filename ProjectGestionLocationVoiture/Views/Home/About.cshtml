@@ -1,0 +1,113 @@
+﻿
+@{
+    ViewBag.Title = "About";
+}
+
+
+
+<div class="m-2 box">
+    <div class="mb-4">
+        <h2 class="text-center primary-color fw-bold mb-2 mx-1 mx-md-4 mt-4 text-modified m-2">Qui Sommes-Nous ?</h2>
+        <div>
+            <div class="big-row" style="height : 25rem">
+            </div>
+        </div>
+    </div>
+    <div class=" mt-4 p-4">
+        <div class="row">
+            <div class="col-6">
+                <p class="text-center h1 text-colored fw-bold mb-2 mx-1 mx-md-4 mt-4 title text-modified"><span class="primary-color">Vintage </span><span class="secondary-color">Car</span></p>
+            </div>
+            <div class="col-6">
+                <p class="text-modified">
+                    <span class="primary-color">Vintage </span><span class="secondary-color">Car</span> est une Agence de location de voitures au Maroc.
+                    depuis 2016, Spécialisée dans la location de voitures à usage personnel,
+                    professionnel. la qualité de notre service,
+                    l'amabilité de nos agents et le bon état de nos voitures sont les atouts qui nous distinguent.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class=" mt-2 p-4">
+        <div class="row">
+            <div class="col-6">
+                <p class="text-center h1 fw-bold mb-2 mx-1 mx-md-4 mt-4 text-modified"><span class="primary-color">Contactez-</span><span class="secondary-color">nous</span></p>
+            </div>
+            <div class="col-6">
+                <p class="text-modified"> <i class="fas fa-map-marker-alt secondary-color"></i> 23, BD. Mohamed Zarktouni 1er Etage N13 Casablanca </p>
+                <p class="text-modified"> <i class="fas fa-envelope secondary-color"></i> contact@vintagecar.com </p>
+                <p class="text-modified"> <i class="fas fa-phone secondary-color"></i> +212 5 24 87 58 91 </p>
+                <p class="text-modified">  <i class="fas fa-mobile-alt secondary-color"></i> +212 6 55 87 58 91 </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-2 p-4">
+        <div class="row">
+            <div class="col-6">
+                <p class="text-center h1 fw-bold mb-2 mx-1 mx-md-4 mt-4 text-modified"><span class="primary-color">CEO </span></p>
+            </div>
+            <div class="col-6">
+                <img src="@Url.Content("~/Assets/App/pers/ceo.jpg")" alt="Avatar" class="image" style="width:100%">
+                <div class="overlay">
+                    <div class="text text-modified text-light">
+                        <p>BOUZRI Mohamed</p>
+                        <p>Founder, CEO, CTO</p>
+                        <a href="https://www.linkedin.com/in/mohamed-bouzri"><i class="fab fa-linkedin secondary-color"></i></a>
+                        <a href="https://twitter.com/BouzriM?fbclid=IwAR2dpAgxd30ckgKaDkI4yyD6T7tJl16Z8djvhOYNe1_bXXB54y69iBdjYV8"><i class="fab fa-twitter secondary-color"></i></a>
+                        <a href="https://www.instagram.com/mohamed1bzr/"><i class="fab fa-instagram secondary-color"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=100019129740230"><i class="fab fa-facebook secondary-color"></i></a>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Footer
+{
+    <div class="bg mt-4 text-light py-4">
+        <div class="container row d-flex justify-content-center align-items-center">
+            Copyright @DateTime.Now.Year <span class="ml-2 brand"> Vintage <span class="secondary-color">Car</span></span>
+        </div>
+    </div>
+}
+
+<style>
+    .image {
+        opacity: 1;
+        max-width: 50%;
+        transition: .5s ease;
+        backface-visibility: hidden;
+    }
+
+    .overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: #072227;
+        overflow: hidden;
+        width: 0;
+        height: 100%;
+        transition: .5s ease;
+    }
+
+    .row:hover .overlay {
+        width: 50%;
+    }
+
+    .text {
+        white-space: nowrap;
+        font-size: 20px;
+        position: absolute;
+        overflow: hidden;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+    }
+
+</style>

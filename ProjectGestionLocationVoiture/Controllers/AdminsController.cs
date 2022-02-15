@@ -270,10 +270,7 @@ namespace ProjectGestionLocationVoiture.Controllers
             return View(voiture);
         }
 
-        // GET: Admins/Edit/5
 
-        
-      
         public ActionResult ModifierVoiture(int? id)
         {
             if (id == null)
