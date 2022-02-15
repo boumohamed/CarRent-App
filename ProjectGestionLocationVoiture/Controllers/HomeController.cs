@@ -13,8 +13,8 @@ namespace ProjectGestionLocationVoiture.Controllers
         public ActionResult Index()
         {
             ViewBag.Voitures = db.Voitures.Count();
-            ViewBag.Reservations = db.Clients.Count();
-            ViewBag.Clients = db.Reservations.Count();
+            ViewBag.Reservations = db.Reservations.Count();
+            ViewBag.Clients = db.Clients.Count();
             return View();
             
         }
@@ -23,6 +23,9 @@ namespace ProjectGestionLocationVoiture.Controllers
         public ActionResult Index(string categorie, string carburant, DateTime? datedebut, DateTime? datefin)
         {
             ViewBag.Error = 0;
+            ViewBag.Voitures = db.Voitures.Count();
+            ViewBag.Reservations = db.Reservations.Count();
+            ViewBag.Clients = db.Clients.Count();
             if (datedebut == null || datefin == null || datedebut > datefin || datefin == DateTime.Now || datefin == datedebut)
             {
                 ViewBag.Error = 1;
