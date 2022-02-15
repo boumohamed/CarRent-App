@@ -161,9 +161,11 @@ namespace ProjectGestionLocationVoiture.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ModifierModele(Modele modele)
         {
+            
             if (ModelState.IsValid)
             {
                 db.Entry(modele).State = EntityState.Modified;
+
                 db.SaveChanges();
                 return RedirectToAction("Modeles");
             }

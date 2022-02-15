@@ -22,6 +22,7 @@
                     <p class="text-center h1 text-colored fw-bold mb-2 mx-1 mx-md-4 mt-4 title text-modified"><span class="primary-color">Vintage </span><span class="secondary-color">Car</span></p>
                     <p class="text-center h4 fw-bold mb-5 text-modified text-colored">Modifier Ce Modele</p>
                     <div class="form-horizontal mx-1 mx-md-4">
+                        @Html.HiddenFor(model => model.MID)
                         <div class="form-group">
                             @Html.LabelFor(model => model.Marque, htmlAttributes: new { @class = "control-label text-modified" })
                             <div class="col-12">
