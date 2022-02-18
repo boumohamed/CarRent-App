@@ -12,13 +12,13 @@
                 Voiture
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TypeLocation)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.DateDebutLocation)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DateFinLocation)
+            </th>
+            <th>
+                Total en DH TTC
             </th>
         </tr>
 
@@ -29,14 +29,23 @@
                     @Html.DisplayFor(modelItem => item.Voiture.Modele.Marque) @Html.DisplayFor(modelItem => item.Voiture.Modele.Serie)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.TypeLocation)
+                    @item.DateDebutLocation.ToString("dddd, dd MMMM yyyy")
                 </td>
-                <th>
-                    @Html.DisplayFor(modelItem => item.DateDebutLocation)
-                </th>
-                <th>
-                    @Html.DisplayFor(modelItem => item.DateFinLocation)
-                </th>
+                <td>
+                    @item.DateFinLocation.ToString("dddd, dd MMMM yyyy")
+                </td>
+                <td>
+                    @if (item.TypeLocation == "courte")
+                    {
+                        var total = (item.DateFinLocation - item.DateDebutLocation).Days * item.Voiture.Prixournalier + 150.00;
+                        @total;
+                    }
+                    else
+                    {
+                        var total = (item.DateFinLocation - item.DateDebutLocation).Days * item.Voiture.Prixournalier * 0.6 + 150.00;
+                        @total;
+                    }
+                </td>
                 
             </tr>
         }

@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "NotFound";
+}
+
+<div class="row d-flex justify-content-center">
+    <div class="centralized">
+        <h1 class="text404">4<span class="secondary-color">0</span>4</h1>
+        <h1 style="font-family: Brush Script MT, Brush Script Std, cursive;"> <span class="secondary-color">OOPS ! </span></h1>
+    </div>
+</div>
+
+@section Footer
+{
+    <div class="bg mt-4 text-light py-5 bottoming" style="width: 100%">
+        <div class="container row d-flex justify-content-center align-items-center">
+            Copyright @DateTime.Now.Year <span class="ml-2 brand"> Vintage <span class="secondary-color">Car</span></span>
+        </div>
+    </div>
+}
+
+<style>
+    .centralized {
+        position: relative;
+        bottom: 50%;
+    }
+
+    .text404 {
+        font-size: 6rem;
+        font-family: Brush Script MT, Brush Script Std, cursive;
+    }
+    .bottoming
+    {
+        position: absolute;
+        bottom : 0;
+    }
+</style>

@@ -16,7 +16,6 @@ namespace ProjectGestionLocationVoiture.Controllers
             ViewBag.Reservations = db.Reservations.Count();
             ViewBag.Clients = db.Clients.Count();
             return View();
-            
         }
 
         [HttpPost]
@@ -41,9 +40,8 @@ namespace ProjectGestionLocationVoiture.Controllers
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult NotFound()
         {
-            ViewBag.Message = "Your contact page.";
 
             return View();
         }

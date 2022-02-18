@@ -28,6 +28,13 @@ namespace ProjectGestionLocationVoiture.Controllers
             var Clients = db.Clients;
             return View(Clients.ToList());
         }
+
+        [HttpPost]
+        public ActionResult Clients(string name)
+        {
+            var Clients = db.Clients.Where(c => c.Nom.Contains(name.Trim()));
+            return View(Clients.ToList());
+        }
         public ActionResult DetailsClient(int? id)
         {
             if (id == null)
@@ -37,7 +44,7 @@ namespace ProjectGestionLocationVoiture.Controllers
             Client client = db.Clients.Find(id);
             if (client == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("NotFound", "Home");
             }
             return View(client);
         }
@@ -54,12 +61,12 @@ namespace ProjectGestionLocationVoiture.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("NotFound", "Home");
             }
             Admin admin = db.Admins.Find(id);
             if (admin == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("NotFound", "Home");
             }
 
             return View(admin);
@@ -118,7 +125,7 @@ namespace ProjectGestionLocationVoiture.Controllers
             Modele modele = db.Modeles.Find(id);
             if (modele == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("NotFound", "Home");
             }
             return View(modele);
         }
@@ -151,7 +158,7 @@ namespace ProjectGestionLocationVoiture.Controllers
             Modele modele = db.Modeles.Find(id);
             if (modele == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("NotFound", "Home");
             }
             
             return View(modele);
@@ -174,10 +181,21 @@ namespace ProjectGestionLocationVoiture.Controllers
 
         /* ---------------------------------------- Reservations -----------------------------------------------*/
 
+
+
         public ActionResult Reservations()
         {
             var reservations = db.Reservations.Include(r => r.Voiture);
             reservations = reservations.Include(r => r.Client);
+            return View(reservations.ToList());
+        }
+
+        [HttpPost]
+        public ActionResult Reservations(string name)
+        {
+            var reservations = db.Reservations.Include(r => r.Voiture);
+            reservations = reservations.Include(r => r.Client);
+            reservations = reservations.Where(r => r.Client.Nom.Contains(name));
             return View(reservations.ToList());
         }
 
@@ -210,12 +228,12 @@ namespace ProjectGestionLocationVoiture.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("NotFound", "Home");
             }
             Voiture voiture = db.Voitures.Find(id);
             if (voiture == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("NotFound", "Home");
             }
             return View(voiture);
         }
@@ -312,7 +330,7 @@ namespace ProjectGestionLocationVoiture.Controllers
             Voiture voiture = db.Voitures.Find(id);
             if (voiture == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("NotFound", "Home");
             }
             return View(voiture);
         }

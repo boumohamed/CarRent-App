@@ -6,32 +6,49 @@
 <p class="text-center h1 fw-bold mb-1 title text-modified text-colored"><span class="primary-color">Vintage </span><span class="secondary-color">Car</span></p>
 <p class="text-center h4 fw-bold m-3 text-modified text-colored">Reservations</p>
 
-<div class="table-responsive-sm">
-    <table class="table box table-bordered">
-        <tr class="bg text-light">
-            <th>
-                ID Client
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Client.Nom)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Client.Telephone)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateDebutLocation)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateFinLocation)
-            </th>
-            <th></th>
-        </tr>
+@using (Html.BeginForm("Reservations", "Admins", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
 
-        @foreach (var item in Model)
-        {
-            if(item.DateFinLocation < DateTime.Now)
+
+<div class="form-inline justify-content-center">
+    
+    <div class="form-group mx-sm-5 mb-3 mt-1">
+        <input type="text" class="form-control" name="name" placeholder="Nom du Client...">
+    </div>
+    <button type="submit" class="btn btn-outline-danger mr-4 mb-2 px-4 text-modified"><i class="fas fa-search"></i> Chercher</button>
+</div>
+    }
+
+    <div class="table-responsive-sm my-4">
+        <table class="table box table-bordered">
+            <tr class="bg text-light text-modified">
+                <th>
+                    ID Client
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Client.Nom)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Client.Telephone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateDebutLocation)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateFinLocation)
+                </th>
+                <th>
+                    Total en DH TTC
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                if (item.DateFinLocation < DateTime.Now)
                 {
-                    <tr>
+                    <tr class="text-modified">
                         <td class="bg-danger text-light">
                             @Html.DisplayFor(modelItem => item.Client.UID)
                         </td>
@@ -46,6 +63,18 @@
                         </td>
                         <td class="bg-danger text-light">
                             @item.DateFinLocation.ToString("dddd, dd MMMM yyyy")
+                        </td>
+                        <td class="bg-danger text-light">
+                            @if (item.TypeLocation == "courte")
+                            {
+                                var total = (item.DateFinLocation - item.DateDebutLocation).Days * item.Voiture.Prixournalier + 150.00;
+                                @total;
+                            }
+                            else
+                            {
+                                var total = (item.DateFinLocation - item.DateDebutLocation).Days * item.Voiture.Prixournalier * 0.6 + 150.00;
+                                @total;
+                            }
                         </td>
                         <td>
                             <div class="row justify-content-center p-1">
@@ -55,13 +84,13 @@
                                     </a>
                                     <a href="@Url.Action("DetailsReservation", "Admins", new { date = item.DateDebutLocation, client = item.CID, voiture = item.VID })" class="btn btn-outline-danger text-modified">
                                         Supprimer <i class="fas fa-trash-alt"></i>
-                                    </a>                                    
+                                    </a>
                                 </div>
                             </div>
                         </td>
                     </tr>
-            }
-            else
+                }
+                else
                 {
                     <tr>
                         <td>
@@ -80,10 +109,22 @@
                             @item.DateFinLocation.ToString("dddd, dd MMMM yyyy")
                         </td>
                         <td>
+                            @if (item.TypeLocation == "courte")
+                            {
+                                var total = (item.DateFinLocation - item.DateDebutLocation).Days * item.Voiture.Prixournalier + 150.00;
+                                @total;
+                            }
+                            else
+                            {
+                                var total = (item.DateFinLocation - item.DateDebutLocation).Days * item.Voiture.Prixournalier * 0.6 + 150.00;
+                                @total;
+                            }
+                        </td>
+                        <td>
                             <div class="row justify-content-center p-1">
                                 <div class="btn-group" role="group">
                                     <a href="@Url.Action("DetailsReservation", "Admins", new { date = item.DateDebutLocation, client = item.CID, voiture = item.VID })" class="btn btn-outline-danger text-modified">
-                                        <i class="fas fa-arrow-right"></i> Détails 
+                                        <i class="fas fa-arrow-right"></i> Détails
                                     </a>
                                     <a href="@Url.Action("DetailsReservation", "Admins", new { date = item.DateDebutLocation, client = item.CID, voiture = item.VID })" class="btn btn-outline-danger text-modified">
                                         Supprimer <i class="fas fa-trash-alt"></i>
@@ -94,7 +135,7 @@
                     </tr>
                 }
 
-        }
+            }
 
-    </table>
-</div>
+        </table>
+    </div>

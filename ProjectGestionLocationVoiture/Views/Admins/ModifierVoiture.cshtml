@@ -22,7 +22,7 @@
 
                                 <div class="form-group">
                                     @Html.LabelFor(model => model.MID, "MID", htmlAttributes: new { @class = "control-label text-modified" })
-                                    <div class="col-md-10">
+                                    <div class="col">
                                         @Html.DropDownList("MID", null, htmlAttributes: new { @class = "form-control", @readonly = true })
                                         @Html.ValidationMessageFor(model => model.MID, "", new { @class = "text-danger text-modified" })
                                     </div>
@@ -30,7 +30,7 @@
 
                                 <div class="form-group">
                                     @Html.LabelFor(model => model.DateCirculation, htmlAttributes: new { @class = "control-label text-modified" })
-                                    <div class="col-md-12">
+                                    <div class="col">
                                         @Html.EditorFor(model => model.DateCirculation, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
                                         @Html.ValidationMessageFor(model => model.DateCirculation, "", new { @class = "text-danger text-modified" })
                                     </div>
@@ -38,14 +38,14 @@
 
                                 <div class="form-group">
                                     @Html.LabelFor(model => model.Carburant, htmlAttributes: new { @class = "control-label text-modified" })
-                                    <div class="col-md-10">
+                                    <div class="col">
                                         @Html.EditorFor(model => model.Carburant, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
                                         @Html.ValidationMessageFor(model => model.Carburant, "", new { @class = "text-danger text-modified" })
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     @Html.LabelFor(model => model.Immatriculation, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class="col-md-10">
+                                    <div class="col">
                                         @Html.EditorFor(model => model.Immatriculation, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
                                         @Html.ValidationMessageFor(model => model.Immatriculation, "", new { @class = "text-danger" })
                                     </div>
@@ -54,8 +54,8 @@
 
                                 <div class="form-group">
                                     @Html.LabelFor(model => model.ImagePrincipaleFile, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class="col-md-10">
-                                        @Html.EditorFor(model => model.ImagePrincipale, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                    <div class="col">
+                                        @Html.EditorFor(model => model.ImagePrincipale, new { htmlAttributes = new { @class = "form-control" } })
                                         @Html.ValidationMessageFor(model => model.ImagePrincipale, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
@@ -63,15 +63,15 @@
 
                                 <div class="form-group">
                                     @Html.LabelFor(model => model.ImageSecondaireFile, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class="col-md-10">
-                                        @Html.EditorFor(model => model.ImageSecondaire, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                    <div class="col">
+                                        @Html.EditorFor(model => model.ImageSecondaire, new { htmlAttributes = new { @class = "form-control" } })
                                         @Html.ValidationMessageFor(model => model.ImageSecondaire, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     @Html.LabelFor(model => model.Prixournalier, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class="col-md-10">
+                                    <div class="col">
                                         @Html.EditorFor(model => model.Prixournalier, new { htmlAttributes = new { @class = "form-control" } })
                                         @Html.ValidationMessageFor(model => model.Prixournalier, "", new { @class = "text-danger" })
                                     </div>
@@ -79,7 +79,7 @@
 
                                 <div class="form-group">
                                     @Html.LabelFor(model => model.Categorie, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class="col-md-10">
+                                    <div class="col">
                                         @Html.EditorFor(model => model.Categorie, new { htmlAttributes = new { @class = "form-control" } })
                                         @Html.ValidationMessageFor(model => model.Categorie, "", new { @class = "text-danger" })
                                     </div>
@@ -98,7 +98,7 @@
 
                                 <div class="form-group">
                                     <div class="col-md-offset-2 col-md-10">
-                                        <input type="submit" value="Save" class="btn btn-outline-danger" />
+                                        <input type="submit" value="Save" class="btn btn-outline-danger px-3" />
                                     </div>
                                 </div>
                             </div>
@@ -110,7 +110,10 @@
     </div>
 }
 
+
+
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    <a href="@Url.Action("Voitures", "Admins")" class="btn btn-outline-danger text-modified my-5"> <i class="fas fa-arrow-circle-left"></i> Liste des Voitures </a>
 </div>
+
 

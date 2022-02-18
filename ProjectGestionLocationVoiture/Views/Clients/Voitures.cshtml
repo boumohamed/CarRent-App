@@ -8,28 +8,34 @@
 @using (Html.BeginForm("Voitures", "clients", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    <div class="row justify-content-center mt-3">
-        <div class="col-md-4">
-            <div class="form-group row">
-                <label class="control-label col-md-4 text-modified">Départ</label>
-                <input type="date" name="dateDebut" class="form-control col-md-8" value="@ViewBag.dateDebit" />
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="form-group row">
-                <label class="control-label col-md-4 text-modified">Retour</label>
-                <input type="date" name="dateFin" class="form-control col-md-8" value="@ViewBag.dateFin" />
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="form-group">
-                <button type="submit" class="btn btn-outline-danger text-modified"><i class="fas fa-search"></i> CHERCHER </button>
+
+    <div class="row d-flex justify-content-center my-4 align-items-center h-100 box" style="border-radius:10px">
+        <div class="col">
+            <div class="row justify-content-center">
+                <div class="col-md-10 col-lg-6 col-xl-5 order-md-2 order-lg-1 ">
+                    <div class="row">
+                        <div class="form-group col-md-6 col-sm-6">
+                            <label class="control-label text-modified" for="dateDebut">Date de Départ</label>
+                            <input type="date" name="dateDebut" id="dateDebut" class="form-control" />
+                        </div>
+                        <div class="form-group col-md-6 col-sm-6">
+                            <label class="control-label text-modified" for="dateFin">Date de Retour</label>
+                            <input type="date" name="dateFin" id="dateFin" class="form-control" />
+                        </div>
+
+                        <div class="d-flex justify-content-center col-md-12 col-sm-6">
+                            <button type="submit" class="btn btn-outline-danger mb-3 text-modified"><i class="fas fa-search"></i> Chercher</button>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-10 col-lg-6 big-row col-xl-7 d-flex align-items-center order-md-1 order-lg-2">
+                </div>
             </div>
         </div>
     </div>
+
 }
-
-
 
 @if (Model.Count() > 0)
 {
@@ -39,8 +45,8 @@
 
 
             <div class="col-sm-12 col-md-4 mb-4">
-                <div class="card border-0 card-view p-2" style="width: 20rem;">
-                    <img src="@Url.Content(item.ImagePrincipale)" class="card-img-top img" alt="@item.Modele.Marque">
+                <div class="card border-0 card-view p-2" style="width: 20rem; max-height:420px">
+                    <img src="@Url.Content(item.ImagePrincipale)" class="card-img-top img" alt="@item.Modele.Marque" style="max-height : 140px">
                     <div class="card-body">
                         <h5 class="card-title Animated-title text-modified"> @Html.DisplayFor(modelItem => item.Modele.Marque) @Html.DisplayFor(modelItem => item.Modele.Serie)</h5>
                         <p class="card-text"><i class="fas fa-gas-pump"></i> @Html.DisplayFor(modelItem => item.Carburant)</p>
@@ -67,13 +73,11 @@
                                 Reserver <i class="fas fa-ban"></i>
                             </a>
                         }
-
                     </div>
                     <div class="card-footer text-muted text-modified row justify-content-center">
                         @Html.DisplayFor(modelItem => item.Prixournalier) Dh/Jour
                     </div>
                 </div>
-
             </div>
 
         }

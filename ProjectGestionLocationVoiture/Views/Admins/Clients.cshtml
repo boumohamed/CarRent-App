@@ -26,6 +26,21 @@
 -->
 <p class="text-center h1 fw-bold mb-1 title text-modified text-colored"><span class="primary-color">Vintage </span><span class="secondary-color">Car</span> </p>
 <p class="text-center h4 fw-bold m-3 text-modified text-colored">Liste Des Clients</p>
+
+@using (Html.BeginForm("Clients", "Admins", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-inline justify-content-center">
+        <div class="form-group mx-sm-5 mb-3 mt-1">
+            <input type="text" class="form-control" name="name" placeholder="Nom du Client...">
+        </div>
+        <button type="submit" class="btn btn-outline-danger mr-4 mb-2 px-4 text-modified"><i class="fas fa-search"></i> Chercher</button>
+    </div>
+
+
+}
+
 <div class="table-responsive-sm">
     <table class="table table-bordered mt-3 box">
         <tr class="bg text-light text-modified">

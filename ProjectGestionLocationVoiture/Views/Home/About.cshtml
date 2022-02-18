@@ -64,7 +64,7 @@
             </div>
         </div>
     </div>
-</div>
+
 
 @section Footer
 {
@@ -78,9 +78,11 @@
 <style>
     .image {
         opacity: 1;
-        max-width: 50%;
         transition: .5s ease;
         backface-visibility: hidden;
+        width: 100%;
+        max-width: 200px;
+        height: auto;
     }
 
     .overlay {
@@ -92,11 +94,12 @@
         overflow: hidden;
         width: 0;
         height: 100%;
+        max-width: 220px;
         transition: .5s ease;
     }
 
     .row:hover .overlay {
-        width: 50%;
+        width: 100%;
     }
 
     .text {
